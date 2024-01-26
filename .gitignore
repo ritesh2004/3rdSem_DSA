@@ -7,3 +7,6 @@ Stack_Array.exe
 Stack_LL.exe
 InfixToPrefix.exe
 InfixToPostfix.exe
+example.cpp
+example.exe
+PostfixEval.exe
