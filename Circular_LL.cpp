@@ -36,6 +36,7 @@ class CLL{
         else{
             newNode -> next = last -> next;
             last -> next = newNode;
+            last = newNode;
         }
     }
 
@@ -47,26 +48,76 @@ class CLL{
         }
         else if (pos == 1) insertAtBegin(val);
         else{
-            node* temp = last->next;
-            for (int i = 0; i < pos; i++)
+            node* temp = last;
+            for (int i = 0; i < pos-1; i++)
+            {
+                /* code */
+                temp = temp->next;
+            }
+            newNode -> next = temp -> next;
+            temp -> next = newNode;
+        }
+    }
+
+    void deleteAtEnd(){
+        node* temp = last->next;
+        if (last == NULL)
+        {
+            /* code */
+            return;
+        }
+
+        do{
+            /* code */
+            temp = temp -> next;
+        }while (temp->next != last);
+
+        temp->next = last->next;
+        last = temp;
+    }
+
+    void deleteAtBegin(){
+        node* temp = last->next;
+        if (last == NULL)
+        {
+            /* code */
+            return;
+        }
+        else{
+            last -> next = temp -> next;
+        }
+    }
+
+    void deleteAtPos(int pos){
+        node* temp = last;
+        if (last == NULL) return;
+        else if(pos == 1) deleteAtBegin();
+        else{
+            for (int i = 0; i < pos-1 && temp->next != last; i++)
             {
                 /* code */
                 temp = temp -> next;
-                cout<<temp->data<<endl;
             }
-            
+            temp -> next = temp -> next -> next;
         }
     }
 
     void display(){
-        node* temp = last->next;
+        node* temp = last;
+        if (last == NULL)
+        {
+            /* code */
+            cout<<"Empty Linked List"<<endl;
+            return;
+        }
+        
         cout<<"---------- Circular Linked List -----------"<<endl;
         do
         {
             /* code */
-            cout<<temp->data<<"->";
             temp = temp -> next;
-        } while(temp != last->next);
+            cout<<temp->data<<"->";
+        } while(temp != last);
         cout<<"NULL"<<endl;
     }
 };
@@ -74,9 +125,11 @@ class CLL{
 
 int main(){
     CLL LL;
-    LL.insertAtBegin(5);
-    LL.insertAtBegin(10);
-    LL.insertAtBegin(15);
-    LL.insertAtPos(20,2);
+    LL.insertAtEnd(5);
+    LL.insertAtEnd(10);
+    LL.insertAtEnd(15);
+    LL.insertAtBegin(1);
+    LL.insertAtPos(20,3);
+    LL.deleteAtPos(3);
     LL.display();
 }
