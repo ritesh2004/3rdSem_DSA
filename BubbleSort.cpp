@@ -2,15 +2,19 @@
 using namespace std;
 
 void BubbleSort(int arr[],int l){
-    for (int i = 0; i < l; i++)
+    for (int i = 0; i <= l-1; i++)
     {
         /* code */
-        for (int j = 0; j < l-i-1; j++)
+        int isSwaped = 0;
+        for (int j = 0; j <= l-i-1; j++)
         {
             /* code */
             if (arr[j]>arr[j+1]){
                 swap(arr[j],arr[j+1]);
+                isSwaped = 1;
             }
+            if (isSwaped == 0)
+                break;
         }
         
     }
@@ -25,10 +29,8 @@ void swap(int a,int b){
 
 int main(){
     int n;
-    cout<<"Enter size of Array: ";
     cin>>n;
     int arr[n];
-    cout<<"Enter array elements: ";
     for (int i = 0; i < n; i++)
     {
         /* code */
